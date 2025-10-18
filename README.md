@@ -29,12 +29,12 @@ Walas-Tree introduces a **learning-driven partitioning framework** that adapts t
 ## Datasets
 
 **Located in:**  
-`./src/datasets/`
+`./src/datasets/workload/`
 
 Each dataset contains **1 million data points** with corresponding workload and query sets.  
 They are consistent with the four experimental distributions described in **Section 4.1** of the paper:
 
-| Dataset | Type | Description|
+| Workload | Type | Description|
 |----------|------|-------------|
 | **UNI** | Uniform | Evenly distributed keys across dimensions |
 | **GAU** | Gaussian | Clustered around a central mean with normal deviation |
