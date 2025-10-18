@@ -51,10 +51,12 @@ To run the **Walas-Tree** and **Walas-Tree (LO)** examples and evaluate query ti
    cd Walas-Tree
    
 2. **Compile all Java source files**
-    javac -d bin src/**/*.java
+```bash
+   javac -d bin src/**/*.java
 
-3. **Run the main example**
-   java -cp bin Main
+4. **Run the main example**
+```bash
+java -cp bin Main
 
 ## Configuration
 
