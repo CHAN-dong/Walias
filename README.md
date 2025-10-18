@@ -41,12 +41,6 @@ They are consistent with the four experimental distributions described in **Sect
 | **SKE** | Skewed (Zipf-like) | Heavy-tail key distribution dominated by a few dense regions |
 | **MIX** | Mixed | Hybrid of uniform and Gaussian distributions |
 
-Each dataset folder includes:
-- `data_*.txt` — data records  
-- `workload_*.txt` — training query workload used for split optimization  
-- `query_*.txt` — test queries for performance evaluation
-
-
 ## Usage
 
 To run the **Walas-Tree** and **Walas-Tree (LO)** examples and evaluate query time, construction time, and index size, follow these steps:
