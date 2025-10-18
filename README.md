@@ -32,9 +32,8 @@ Each workload contains **1 million data points** with corresponding workload and
 They are consistent with the four experimental distributions described in **Section 4.1** of the paper:
 | Datasets | Description|
 |----------|-------------|
-| **TCP-H** | Based on the TPC-H benchmark, which consists of eight tables and twenty-two SQL queries. We use only the fact table lineitem, containing six attributes: shipping date, receipt
-date, ordered quantity, extended price before discount, discount rate, and applied tax rate for each transaction record. The dataset is scaled to 100 million tuples with a scale factor of 20. |
-| **OSM** | A real-world dataset derived from the UCR STAR repository [15], containing 100 million POIs extracted from the northeastern region of the United States. Each record includes six attributes, such as GPS coordinates, ID, timestamp, record type, and landmark category |
+| **TCP-H** | Based on the TPC-H benchmark, which consists of eight tables and twenty-two SQL queries. We use only the fact table lineitem, containing six attributes: shipping date, receipt date, ordered quantity, extended price before discount, discount rate, and applied tax rate for each transaction record. The dataset is scaled to 100 million tuples with a scale factor of 20. |
+| **OSM** | A real-world dataset derived from the UCR STAR repository, containing 100 million POIs extracted from the northeastern region of the United States. Each record includes six attributes, such as GPS coordinates, ID, timestamp, record type, and landmark category |
 | **Uniform** | A synthetic 20-dimensional dataset with 100 million objects uniformly distributed across all dimensions, where each dimension is represented by a 64-bit floating-point value. |
 | **Skew** | A synthetic dataset sharing the same schema as **Uniform**,  but introducing skewness to each attribute value *v ∈ [0, 1]* using  a skew factor *r = 2*, transforming it into a larger-biased value as  *v′ = 1 − (1 − v)<sup>r</sup>* |
 
