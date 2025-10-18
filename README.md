@@ -59,10 +59,11 @@ To run the **Walas-Tree** and **Walas-Tree (LO)** examples and evaluate query ti
    java -cp bin Main
       ```
 
-This will execute the example defined in Main.java and output:
-         Query latency
-         Index construction time
-         Index size
+This will execute the example defined in `Main.java` and output:
+
+- Query latency  
+- Index construction time  
+- Index size
 ## Configuration
 
 The default runtime parameters are defined in:
