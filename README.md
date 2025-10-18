@@ -1,6 +1,6 @@
 # Walas-Tree: A Multidimensional Workload-Aware Learned Tree with Adaptive Splitting
 
-This repository provides the implementation of **Walas-Tree**, a multidimensional workload-aware learned index structure that adaptively partitions data and queries to optimize query latency, index size, and construction time.  
+This repository provides the implementation of **Walas-Tree**, a multidimensional workload-aware learned index structure that adaptively partitions data and queries to optimize query latency, inde cost.  
 The algorithm is proposed in the paper *“Walas-Tree: A Multidimensional Workload-Aware Learned Tree with Adaptive Splitting.”*
 
 Walas-Tree introduces a **learning-driven partitioning framework** that adapts to **workload distributions** and **data characteristics**, providing significant efficiency improvements over traditional learned index methods.
@@ -25,6 +25,27 @@ Walas-Tree introduces a **learning-driven partitioning framework** that adapts t
 - **Data Management**: Custom multidimensional data structure for adaptive indexing  
 
 ---
+
+## Datasets
+
+**Located in:**  
+`./src/datasets/`
+
+Each dataset contains **1 million data points** with corresponding workload and query sets.  
+They are consistent with the four experimental distributions described in **Section 4.1** of the paper:
+
+| Dataset | Type | Description | Purpose |
+|----------|------|-------------|----------|
+| **UNI** | Uniform | Evenly distributed keys across dimensions | Baseline test for balanced workloads |
+| **GAU** | Gaussian | Clustered around a central mean with normal deviation | Simulates localized query access |
+| **SKE** | Skewed (Zipf-like) | Heavy-tail key distribution dominated by a few dense regions | Tests robustness to data skew |
+| **MIX** | Mixed | Hybrid of uniform and Gaussian distributions | Evaluates adaptability to complex workloads |
+
+Each dataset folder includes:
+- `data_*.txt` — data records  
+- `workload_*.txt` — training query workload used for split optimization  
+- `query_*.txt` — test queries for performance evaluation
+
 
 ## Usage
 
