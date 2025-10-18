@@ -34,12 +34,12 @@ Walas-Tree introduces a **learning-driven partitioning framework** that adapts t
 Each dataset contains **1 million data points** with corresponding workload and query sets.  
 They are consistent with the four experimental distributions described in **Section 4.1** of the paper:
 
-| Dataset | Type | Description | Purpose |
-|----------|------|-------------|----------|
-| **UNI** | Uniform | Evenly distributed keys across dimensions | Baseline test for balanced workloads |
-| **GAU** | Gaussian | Clustered around a central mean with normal deviation | Simulates localized query access |
-| **SKE** | Skewed (Zipf-like) | Heavy-tail key distribution dominated by a few dense regions | Tests robustness to data skew |
-| **MIX** | Mixed | Hybrid of uniform and Gaussian distributions | Evaluates adaptability to complex workloads |
+| Dataset | Type | Description|
+|----------|------|-------------|
+| **UNI** | Uniform | Evenly distributed keys across dimensions |
+| **GAU** | Gaussian | Clustered around a central mean with normal deviation |
+| **SKE** | Skewed (Zipf-like) | Heavy-tail key distribution dominated by a few dense regions |
+| **MIX** | Mixed | Hybrid of uniform and Gaussian distributions |
 
 Each dataset folder includes:
 - `data_*.txt` — data records  
