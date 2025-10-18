@@ -49,15 +49,15 @@ To run the **Walas-Tree** and **Walas-Tree (LO)** examples and evaluate query ti
    ```bash
    git clone https://github.com/anonymity/Walas-Tree.git
    cd Walas-Tree
-   
+   ```
 2. **Compile all Java source files**
 ```bash
    javac -d bin src/**/*.java
-
+   ```
 4. **Run the main example**
 ```bash
 java -cp bin Main
-
+   ```
 ## Configuration
 
 The default runtime parameters are defined in:
