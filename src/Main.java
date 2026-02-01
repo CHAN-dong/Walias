@@ -1,28 +1,31 @@
 import data_structure.*;
-import index.WalasTree;
+import index.Walias;
 
-import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.logging.LogManager;
 
 import static data_structure.Parameters.*;
 import static data_structure.Parameters.initialParameter;
-import static utils.DatasetVisualizer.drawForPartition;
 import static utils.FileUtils.readDataset;
 import static utils.FileUtils.readQuery;
-import static utils.Tools.getSubDataset;
-import static utils.Tools.getSubWorkload;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
 
-        String datasetPath = "./src/datasets/dataset/TPC-1M.csv";
-        String workloadPath = "./src/datasets/workload/UNI_5.0E-5_Query_TCP-100M_test.csv";
-        String queryPath = "./src/datasets/workload/qUNI_5.0E-5_Query_TCP-100M_test.csv";
+        String datasetPath = "./src/datasets/dataset/OSM_1M_6Dim.csv";
+        String workloadPath = "./src/datasets/workload/GAU_5.0E-5_Query_OSM_100M_6Dim_test.csv";
+//        String queryPath = "./src/datasets/workload/UNI_5.0E-5_Query_TCP-100M_test.csv";
+        String queryPath = "./src/datasets/workload/qGAU_5.0E-5_Query_OSM_100M_6Dim_test.csv";
 
+//        Parameters.rate = 0.001;
+//        Test(datasetPath, workloadPath, queryPath);
+//
+//        Parameters.rate = 0.01;
+//        Test(datasetPath, workloadPath, queryPath);
+
+        STRATEGY_II = true;
         Test(datasetPath, workloadPath, queryPath);
     }
 
@@ -32,21 +35,24 @@ public class Main {
         LogManager.getLogManager().reset();
 
         DataSpace dataSpace = readDataset(datasetPath);
+
+        dataSpace.dataset = dataSpace.dataset.subList(0, 1000000);
+
         List<Query> workload = readQuery(workloadPath);
+//        workload = workload.subList(0, 100);
+
         List<Query> testWorkload = readQuery(testWorkloadPath);
         long s, e;
 
         initialParameter(workload, dataSpace, false, false, false);
         System.out.println("Dataset size: " + dataSpace.getDatasetSize() + ", Workload size: " + workload.size());
         s = System.currentTimeMillis();
-        WalasTree walasTree = new WalasTree(dataSpace, workload, testWorkload);
+        Walias walias = new Walias(dataSpace, workload, testWorkload);
         e = System.currentTimeMillis();
         System.out.println("index construct time: " + (e - s) / 1e3 + "s");
-        walasTree.printIndexPerformance();
-        System.out.println("WalasTree cost : " + walasTree.refiningSpaceCost(walasTree.root));
-        walasTree.drawPartition(roundTime++);
+        walias.printIndexPerformance();
 
-//        walasTree.startRefine(K);
+        walias.drawPartition(roundTime++);
 
         System.out.println("Once Time End!");
         System.out.println("Once Time End!");
