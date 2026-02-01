@@ -1,4 +1,4 @@
-# Walas-Tree: A Multidimensional Workload-Aware Learned Tree with Adaptive Splitting
+# Walias: A Multidimensional Workload-Aware Learned Index with Adaptive Splitting
 
 This repository provides the implementation of **Walas-Tree**, a multidimensional workload-aware learned index structure that adaptively partitions data and queries to optimize query latency, inde cost.  
 The algorithm is proposed in the paper *“Walas-Tree: A Multidimensional Workload-Aware Learned Tree with Adaptive Splitting.”*
