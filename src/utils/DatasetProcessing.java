@@ -60,7 +60,7 @@ public class DatasetProcessing {
             int[] point = new int[d];
             for (int j = 0; j < d; j++) {
                 double u = random.nextDouble();
-                double skewedU = 1 - Math.pow(1 - u, r); // 应用倾斜变换
+                double skewedU = 1 - Math.pow(1 - u, r); //
                 point[j] = (int) (minValues[j] + skewedU * (maxValues[j] - minValues[j]));
             }
             String str = Arrays.toString(point);
@@ -106,26 +106,23 @@ public class DatasetProcessing {
 
         Random random = new Random();
 
-        // 计算数据空间中心
         double[] mu = new double[dimension];
         for (int j = 0; j < dimension; j++) {
             mu[j] = (minValues[j] + maxValues[j]) / 2.0;
         }
-        double sigma = dataSize / 1000; // 高斯分布的标准差
+        double sigma = dataSize / 1000; //
 
         for (int i = 0; i < n; i++) {
             int[][] query = new int[2][dimension];
             for (int j = 0; j < dimension; j++) {
                 double u1 = random.nextDouble();
                 double u2 = random.nextDouble();
-                double z0 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2); // 标准正态分布
+                double z0 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2); //
                 double offset = z0 * 0.1 * mu[j];
 
-                // 计算中心点并限制范围
                 int center = (int) Math.round(mu[j] + offset);
                 center = Math.max(minValues[j], Math.min(maxValues[j], center));
 
-                // 生成矩形边界
                 query[0][j] = Math.max(minValues[j], center - len[j]);
                 query[1][j] = Math.min(maxValues[j], center + len[j]);
             }
@@ -144,27 +141,24 @@ public class DatasetProcessing {
 
         Random random = new Random();
 
-        // 计算数据空间中心
         double[] mu = new double[dimension];
         for (int j = 0; j < dimension; j++) {
             mu[j] = (minValues[j] + maxValues[j]) / 2.0;
         }
 
         //dataset size / 10
-        double b = dataSize / 400.0; // Laplace的尺度参数
+        double b = dataSize / 400.0; //
 
         for (int i = 0; i < n; i++) {
             int[][] query = new int[2][dimension];
             for (int j = 0; j < dimension; j++) {
-                // 生成Laplace分布的随机数
+
                 double u = random.nextDouble();
                 double offset = -b * Math.signum(u - 0.5) * Math.log(1 - 2 * Math.abs(u - 0.5));
 
-                // 计算中心点并限制范围
                 int center = (int) Math.round(mu[j] + offset);
                 center = Math.max(minValues[j], Math.min(maxValues[j], center));
 
-                // 生成矩形边界
                 query[0][j] = Math.max(minValues[j], center - len[j]);
                 query[1][j] = Math.min(maxValues[j], center + len[j]);
             }
@@ -371,7 +365,6 @@ public class DatasetProcessing {
 
 
 ////
-//////        当 r = 2 时，数据点更集中在各维度最大值附近。当 r = 0.5 时，数据点更集中在各维度最小值附近。当 r = 1 时，生成的数据与原均匀分布代码一致。
 //        int[][] dataset = generateSkewedSpaceData(1000000, 2, minValues, maxValues,2);
 
 //        int[][] dataset = readBDPDataset("D:\\paper_source\\work_6\\dataset\\OSM.csv", 2000000, new int[2][2]);

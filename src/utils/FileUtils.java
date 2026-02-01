@@ -26,13 +26,11 @@ public class FileUtils {
         int minLen = Math.min(len1, len2);
         int i = 0;
 
-        // 使用循环展开优化，减少循环次数
         for (; i < minLen; i++) {
             result[2 * i] = array1[i];
             result[2 * i + 1] = array2[i];
         }
 
-        // 处理剩余元素
         if (len1 > len2) {
             System.arraycopy(array1, i, result, 2 * i, len1 - i);
         } else if (len2 > len1) {
@@ -41,15 +39,8 @@ public class FileUtils {
 
         return result;
     }
-    /**
-     * 更新数据范围的最小最大值
-     * @param data 当前数据点
-     * @param dataMin 当前x最小值
-    //     * @param dataMax 当前x最大值
-     * @param dataMin 当前y最小值
-    //     * @param dataMax 当前y最大值
-     * @return 更新后的范围值数组
-     */
+
+
     public static double[] rangeMinMax(double[] data, double[] dataMin, double[] dataMax) {
         for (int i = 0; i < data.length; i++){
             if (dataMin[i] > data[i]) {
@@ -60,7 +51,7 @@ public class FileUtils {
             }
         }
 
-        return mergeArraysAlternately(dataMin, dataMax);// 合并两个数组交替合并
+        return mergeArraysAlternately(dataMin, dataMax);
     }
 
     public static DataSpace readDataset(String fileName) throws IOException {
@@ -81,18 +72,18 @@ public class FileUtils {
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            int size_i = 0;  // DATA数量计数器
+            int size_i = 0;
             while ((line = br.readLine()) != null) {
 
-                String[] components = line.trim().split(" "); //按，分割字符串
-//                String[] components = line.trim().split("\\s+"); //按空白字符分割字符串
+                String[] components = line.trim().split(" ");
+//                String[] components = line.trim().split("\\s+");
                 if (components.length >= 2 && (size_i < dataSize) ) {
                     double[] pointData = new double[D];
-                    for(int i = 0; i < D; i++){  // 将字符串转换为数字，控制数据维度
+                    for(int i = 0; i < D; i++){
                         double d = Double.parseDouble(components[i]);
                         pointData[i] = d;
                     }
-                    // 更新范围值
+
                     double[] newRange = rangeMinMax(pointData, dataMin, dataMax);
                     for(int i = 0; i < D; i++){
                         dataMin[i] = newRange[2 * i];
@@ -111,12 +102,12 @@ public class FileUtils {
     }
 
     public static List<Query> readQuery(String queryFile) {
-        List<Query> querySet = new ArrayList<>();  // 存储查询对象的列表
+        List<Query> querySet = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(queryFile))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // 处理每一行数据
+
                 double[][] nDimRectangle = parseRectangleComponents(line, D);
 
                 Query query = new Query(new Point(nDimRectangle[0]), new Point(nDimRectangle[1]));
@@ -131,22 +122,17 @@ public class FileUtils {
     }
 
     public static double[][] parseRectangleComponents(String line, int dimensions) {
-        // 清理字符串：去除多余空格和特殊字符
+
         String cleaned = line.trim()
-                .replaceAll("\\s+", " ")  // 多个空格合并为一个
-                .replaceAll(",", " ");     // 逗号替换为空格
+                .replaceAll("\\s+", " ")
+                .replaceAll(",", " ");
 
         String[] components = cleaned.split(" ");
 
-        // 过滤空字符串
+
         components = Arrays.stream(components)
                 .filter(s -> !s.isEmpty())
                 .toArray(String[]::new);
-//        if (components.length != dimensions * 2) {
-//            throw new IllegalArgumentException(String.format(
-//                    "数据格式错误! 期望%d个数字(%d维矩形)，实际找到%d个。数据: %s",
-//                    dimensions * 2, dimensions, components.length, line));
-//        }
 
         double[][] result = new double[2][dimensions];
 
