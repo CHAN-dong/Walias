@@ -3,10 +3,19 @@ package data_structure;
 import java.util.List;
 
 public class Parameters {
+    public static double ALFA= 303;
+    public static double BETA= 2.3;
+    public static double GAMA = 2.99;
+
+    public static double SIGMA = 10;
+
+    public static boolean STRATEGY_I = false;
+    public static boolean STRATEGY_II = false;
+
 
     public static int D = 2;
 
-    public static int T = 8;
+    public static int T = 3;
 
     public static int H = 8;
 
@@ -16,15 +25,11 @@ public class Parameters {
 
     public static boolean NeedRefine = true;
 
-    public static boolean NeedExtendWorkload = true;
-
     public static double Po;
 
     public static int RECORD = 0;
 
     public static double StopExtendVolume;
-
-    public static int miniPageSize = 1024;
 
     public static boolean SplitDimensionOpt = false;
 
@@ -57,9 +62,5 @@ public class Parameters {
         double v = MBR.computeVolume();
         int querySize = workload.size();
         Po = querySize / v;
-
-
-        // initialize
-        NeedExtendWorkload = needExtendWorkload;
     }
 }

@@ -58,8 +58,9 @@ public class Query {
         return true;
     }
 
-    public boolean hasIntersection(Query other) {
+    public boolean hasIntersection(Query other, int dimension) {
         for (int i = 0; i < D; i++) {
+            if (i == dimension) continue;
             if (pointMax.data[i] < other.pointMin.data[i] || pointMin.data[i] > other.pointMax.data[i]) {
                 return false;
             }
@@ -67,8 +68,9 @@ public class Query {
         return true;
     }
 
-    public boolean hasIntersection(Point point) {
+    public boolean hasIntersection(Point point, int dimension) {
         for (int i = 0; i < D; i++) {
+            if (i == dimension) continue;
             if (pointMax.data[i] < point.data[i] || pointMin.data[i] > point.data[i]) {
                 return false;
             }
@@ -76,21 +78,16 @@ public class Query {
         return true;
     }
 
-    public boolean checkRelation(Query other) {
-
-        // Check if the current rectangle contains another rectangle
-        if (contains(other)) {
-            return false; // embody
-        }
-
-        // check if there is an intersection
-        if (hasIntersection(other)) {
-            return true; // intersect
-        }
-
-        // Otherwise, they will not intersect
-        return false; // they do not intersect
-    }
+//    public boolean checkRelation(Query other) {
+//
+//        // check if there is an intersection
+//        if (hasIntersection(other)) {
+//            return true; // intersect
+//        }
+//
+//        // Otherwise, they will not intersect
+//        return false; // they do not intersect
+//    }
 
     public Query union(Query q2) {
         double[] newMin = new double[D];
