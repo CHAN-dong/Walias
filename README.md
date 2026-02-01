@@ -1,15 +1,15 @@
 # Walias: A Multidimensional Workload-Aware Learned Index with Adaptive Splitting
 
-This repository provides the implementation of **Walas-Tree**, a multidimensional workload-aware learned index structure that adaptively partitions data and queries to optimize query latency, inde cost.  
-The algorithm is proposed in the paper *“Walas-Tree: A Multidimensional Workload-Aware Learned Tree with Adaptive Splitting.”*
+This repository provides the implementation of **Walias**, a multidimensional workload-aware learned index structure that adaptively partitions data and queries to optimize query latency, inde cost.  
+The algorithm is proposed in the paper *“Walias: A Multidimensional Workload-Aware Learned Index with Adaptive Splitting.”*
 
-Walas-Tree introduces a **learning-driven partitioning framework** that adapts to **workload distributions** and **data characteristics**, providing significant efficiency improvements over traditional learned index methods.
+Walias introduces a **learning-driven partitioning framework** that adapts to **workload distributions** and **data characteristics**, providing significant efficiency improvements over traditional learned index methods.
 
 ---
 
 ## Features
 
-- **Walas-Tree (LO)** and **Walas-Tree**: Two core variants for evaluating workload adaptation and learning optimization.  
+- **Walias (LO)** and **Walias**: Two core variants for evaluating workload adaptation and learning optimization.  
 - **Adaptive Splitting Strategy**: Dynamically adjusts data partition boundaries based on workload characteristics.  
 - **Workload-Aware Cost Model**: Balances query latency and index size via learned workload feedback.  
 - **Visualization Support**: View data distribution, query patterns, and partitioning results interactively.  
@@ -53,12 +53,12 @@ They are consistent with the four experimental distributions described in **Sect
 
 ## Usage
 
-To run the **Walas-Tree** and **Walas-Tree (LO)** examples and evaluate query time, construction time, and index size, follow these steps:
+To run the **Walias** and **Walias (LO)** examples and evaluate query time, construction time, and index size, follow these steps:
 
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/anonymity/Walas-Tree.git
-   cd Walas-Tree
+   git clone https://github.com/anonymity/Walias.git
+   cd Walias
    ```
 2. **Compile all Java source files**
    ```bash
